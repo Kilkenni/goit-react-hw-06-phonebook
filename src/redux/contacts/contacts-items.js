@@ -1,4 +1,5 @@
 import { createAction, createReducer } from "@reduxjs/toolkit";
+import { nanoid } from "nanoid";
 
 export const addContact = createAction("contacts/addContact", /*function prepare(contact) {
   return contact;
@@ -10,7 +11,7 @@ export const deleteContact = createAction("contacts/deleteContact"); //payload: 
 //made via "Map" notation
 export const contactReducer = createReducer([], {
   [addContact]: (contacts, action) => {
-    const { newName } = action.payload; //destruct new contact from payload
+    const { name: newName } = action.payload; //destruct new contact from payload
     const normalizedNewName = newName.toLowerCase(); //check if the person already exists in contacts
     if (contacts.items.some( (contact) => {
       return contact.name.toLowerCase() === normalizedNewName;
@@ -19,7 +20,9 @@ export const contactReducer = createReducer([], {
       return contacts;
     }
 
-    contacts.items = [...contacts.items, action.payload]
+    const newContact = ({ id: nanoid(), ...action.payload });
+
+    contacts.items = [...contacts.items, newContact]
     //return [...state.contacts.items, action.payload];
   }, 
 

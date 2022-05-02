@@ -1,4 +1,4 @@
-import {useState, useEffect} from "react";
+import {useState} from "react";
 
 // import { nanoid } from "nanoid";
 
@@ -14,21 +14,21 @@ import ContactList from "./ContactList";
 // ];
 
 export const App = () => {
-  const [contacts, setContacts] = useState(() => {
-    return JSON.parse(localStorage.getItem("contacts")) ?? [];
-  });
+  // const [contacts, setContacts] = useState(() => {
+  //   return JSON.parse(localStorage.getItem("contacts")) ?? [];
+  // });
   const [filter, setFilter] = useState(''); //search filter
 
-  useEffect(() => {
+  /*useEffect(() => {
     if (contacts && contacts.length > 0) {
       localStorage.setItem("contacts", JSON.stringify(contacts));
     }
     else { //if no contacts remain, clean localStorage entirely
       localStorage.removeItem("contacts");
     }  
-  }, [contacts]);
+  }, [contacts]);*/
 
-  const addContact = (newContact) => {
+  /*const addContact = (newContact) => {
     //check if the person already exists in contacts
     const normalizedNewName = newContact.name.toLowerCase();
     if (contacts.some( (contact) => {
@@ -39,7 +39,7 @@ export const App = () => {
     }
 
     setContacts((prevContacts) => { return [...prevContacts, newContact] });
-  }
+  }*/
 
   const onFilterChange = (event) => { 
     setFilter(event.currentTarget.value);
@@ -58,7 +58,7 @@ export const App = () => {
     >
       <h1>Phonebook</h1>
       <ContactForm
-        onSubmit={(newContact) => {addContact(newContact)}}
+        //onSubmit={(newContact) => {addContact(newContact)}}
       />
 
       <h2>Contacts</h2>
@@ -69,7 +69,7 @@ export const App = () => {
       />
 
       <ContactList
-        contacts={contacts}
+        //contacts={contacts}
         filter={filter}
       />
     </div>

@@ -50,7 +50,6 @@ ContactList.propTypes = {
         })
     ).isRequired,
     filter: propTypes.string,
-    onDeleteContact: propTypes.func.isRequired,
 }
 
 export default ContactList;

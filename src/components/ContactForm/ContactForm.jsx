@@ -1,16 +1,21 @@
-import { nanoid } from "nanoid";
+import { useDispatch } from "react-redux";
+
 import { useState } from "react";
-import propTypes from "prop-types";
+//import propTypes from "prop-types";
 import style from "./ContactForm.module.css"
+
+import { addContact } from "redux/contacts/contacts-items";
 
 const INIT_STATE = {
     name: "",
     number: "", //phone
 }
 
-export default function ContactForm ({onSubmit}) {
+export default function ContactForm (/*{onSubmit}*/) {
     const [contact, setContact] = useState({...INIT_STATE})
     //state = { ...INIT_STATE };
+
+    const dispatch = useDispatch();
 
     function onInputChange(event) {
         const { name, value } = event.currentTarget;
@@ -20,7 +25,9 @@ export default function ContactForm ({onSubmit}) {
 
     function onFormSubmit(event) {
         event.preventDefault();
-        onSubmit({ id: nanoid(), ...contact });
+        // onSubmit({ id: nanoid(), ...contact });
+        //console.log(addContact(contact));
+        dispatch(addContact(contact));
         setContact({ ...INIT_STATE });
     };
 
@@ -58,5 +65,5 @@ export default function ContactForm ({onSubmit}) {
 }
 
 ContactForm.propTypes = {
-    onSubmit: propTypes.func.isRequired,
+    //onSubmit: propTypes.func.isRequired,
 }
