@@ -1,21 +1,19 @@
 import { useSelector, useDispatch } from "react-redux";
 
 import ContactItem from "../ContactItem";
-import propTypes from "prop-types";
+//import propTypes from "prop-types";
 import styles from "./ContactList.module.css"
 
-import {deleteContact} from "../../redux/contacts/contacts-items"
+import {deleteContact} from "../../redux/contacts/items"
 
-const ContactList = ({ /*contacts,*/ filter }) => {
-    const lowCaseFilter = filter.toLowerCase();
+const ContactList = (/*{ contacts, filter }*/) => {
+    //const lowCaseFilter = filter.toLowerCase();
 
-    //console.log(useSelector( (state) => state.contacts.items ));
+    const lowCaseFilter = useSelector((state) => state.contacts.filter).toLowerCase();
     
     const contacts = useSelector((state) => state.contacts.items);
 
     const dispatch = useDispatch();
-
-    //console.log(deleteContact(10));
 
     return (
         contacts.length === 0 ?
@@ -42,14 +40,14 @@ const ContactList = ({ /*contacts,*/ filter }) => {
 }
 
 ContactList.propTypes = {
-    contacts: propTypes.arrayOf(
-        propTypes.shape({
-            id: propTypes.string.isRequired,
-            name: propTypes.string.isRequired,
-            number:propTypes.string.isRequired,
-        })
-    ).isRequired,
-    filter: propTypes.string,
+    // contacts: propTypes.arrayOf(
+    //     propTypes.shape({
+    //         id: propTypes.string.isRequired,
+    //         name: propTypes.string.isRequired,
+    //         number:propTypes.string.isRequired,
+    //     })
+    // ).isRequired,
+    //filter: propTypes.string,
 }
 
 export default ContactList;

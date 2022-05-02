@@ -1,12 +1,27 @@
-import propTypes from "prop-types";
+//import debounce from "debounce";
+import { useSelector, useDispatch } from "react-redux";
+
+//import propTypes from "prop-types";
 import styles from "./Filter.module.css";
 
-const Filter = ({ value, onChange }) => {
+import { update } from "redux/contacts/filter";
+
+const Filter = (/*{ value, onChange }*/) => {
+  const value = useSelector((state) => state.contacts.filter);
+
+  const dispatch = useDispatch();
+
+  function onFilterChange(event) {
+    //todo debounce
+    dispatch(update(event.currentTarget.value));
+
+  }
+
     return (<label>Filter contacts:
               <input
                 type="text"
                 name="filter"
-                onChange={onChange}
+                onChange={onFilterChange}
                 value={value}
                 className={styles.inputFilter}
               />
@@ -14,8 +29,8 @@ const Filter = ({ value, onChange }) => {
 }
 
 Filter.propTypes = {
-    value: propTypes.string,
-    onChange: propTypes.func,
+    //value: propTypes.string,
+    //onChange: propTypes.func,
 }
 
 export default Filter;

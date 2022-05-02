@@ -4,7 +4,7 @@ import { useState } from "react";
 //import propTypes from "prop-types";
 import style from "./ContactForm.module.css"
 
-import { addContact } from "redux/contacts/contacts-items";
+import { addContact } from "redux/contacts/items";
 
 const INIT_STATE = {
     name: "",

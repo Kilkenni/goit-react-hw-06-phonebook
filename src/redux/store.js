@@ -1,6 +1,7 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
 
-import { contactReducer } from "./contacts/contacts-items";
+import itemsReducer from "./contacts/items";
+import filterReducer from "./contacts/filter";
 
 const DUMMY_CONTACTS = [
   {id: 'KindLady', name: 'Athene Margoulis', number: '459-12-56'},
@@ -9,9 +10,17 @@ const DUMMY_CONTACTS = [
   {id: 'TyphoonMaster', name: 'Vasili Shevchenko', number: '227-91-26'},
 ];
 
+// const contactsReducer = combineReducers({
+//   items: itemsReducer,
+//   filter: filterReducer,
+// });
+
 export const store = configureStore({
   reducer: {
-    contacts: contactReducer,
+    contacts: combineReducers({
+      items: itemsReducer,
+      filter: filterReducer,
+    }),
   },
   preloadedState: {
     contacts: {

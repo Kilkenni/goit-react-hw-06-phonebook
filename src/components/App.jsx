@@ -1,6 +1,6 @@
-import {useState} from "react";
-
-// import { nanoid } from "nanoid";
+//import {useState} from "react";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 import ContactForm from "./ContactForm";
 import Filter from "./Filter";
@@ -17,7 +17,7 @@ export const App = () => {
   // const [contacts, setContacts] = useState(() => {
   //   return JSON.parse(localStorage.getItem("contacts")) ?? [];
   // });
-  const [filter, setFilter] = useState(''); //search filter
+  //const [filter, setFilter] = useState(''); //search filter
 
   /*useEffect(() => {
     if (contacts && contacts.length > 0) {
@@ -41,10 +41,6 @@ export const App = () => {
     setContacts((prevContacts) => { return [...prevContacts, newContact] });
   }*/
 
-  const onFilterChange = (event) => { 
-    setFilter(event.currentTarget.value);
-  }
-
   return (
     <div
       style={{
@@ -64,14 +60,15 @@ export const App = () => {
       <h2>Contacts</h2>
 
       <Filter
-        value={filter}
-        onChange={onFilterChange}
+        //value={filter}
+        //onChange={onFilterChange}
       />
 
       <ContactList
         //contacts={contacts}
-        filter={filter}
+        //filter={filter}
       />
+      <ToastContainer />
     </div>
   );
 };
