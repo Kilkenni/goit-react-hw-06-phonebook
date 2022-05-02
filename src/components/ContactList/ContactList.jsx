@@ -1,15 +1,27 @@
+import { useSelector, useDispatch } from "react-redux";
+
 import ContactItem from "../ContactItem";
 import propTypes from "prop-types";
 import styles from "./ContactList.module.css"
 
-const ContactList = ({ contacts, filter, onDeleteContact }) => {
+import {deleteContact} from "../../redux/contacts/contacts-items"
+
+const ContactList = ({ /*contacts,*/ filter }) => {
     const lowCaseFilter = filter.toLowerCase();
+
+    //console.log(useSelector( (state) => state.contacts.items ));
     
+    const contacts = useSelector((state) => state.contacts.items);
+
+    const dispatch = useDispatch();
+
+    //console.log(deleteContact(10));
+
     return (
         contacts.length === 0 ?
         <p>No contacts so far...</p> :           
         <ul className={styles.contactList}>
-            {contacts.map((contact) => {
+            { contacts.map((contact) => {
                 // console.log(`${contact.name.toLowerCase()} includes ${lowCaseFilter}: ${contact.name.toLowerCase().includes(lowCaseFilter)}`);
                 return (contact.name.toLowerCase().includes(lowCaseFilter) &&
                     <li key={contact.id} className={styles.contact}>
@@ -19,7 +31,7 @@ const ContactList = ({ contacts, filter, onDeleteContact }) => {
                         />
                         <button
                             type="button"
-                            onClick={() => onDeleteContact(contact.id)}
+                            onClick={() => dispatch(deleteContact(contact.id))}
                             className={styles.btnDeleteContact}
                         >Delete contact
                         </button>

@@ -1,3 +1,9 @@
+# goit-react-hw-06-phonebook
+
+GoIT React HW#06 Phonebook
+
+Using sync Redux for storing global state (with Redux Toolkit).
+
 **Read in other languages: [Русский](README.md), [Polska](README.pl.md).**
 
 # React homework template

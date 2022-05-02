@@ -41,14 +41,6 @@ export const App = () => {
     setContacts((prevContacts) => { return [...prevContacts, newContact] });
   }
 
-  const deleteContact = (contactId) => {
-    setContacts((prevContacts) => {
-      return prevContacts.filter((contact) => {
-        return contact.id !== contactId;
-      });    
-    });
-  }
-
   const onFilterChange = (event) => { 
     setFilter(event.currentTarget.value);
   }
@@ -79,7 +71,6 @@ export const App = () => {
       <ContactList
         contacts={contacts}
         filter={filter}
-        onDeleteContact={deleteContact}
       />
     </div>
   );
