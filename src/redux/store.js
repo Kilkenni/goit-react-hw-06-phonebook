@@ -1,12 +1,11 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 
-import { persistStore, persistReducer } from 'redux-persist';
+import { persistStore } from 'redux-persist';
 import { FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
-import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
 
-import contactsReducer from "./contacts";
-import itemsReducer from "./contacts/items";
-import filterReducer from "./contacts/filter";
+import contactsReducer from "./contacts/contactsReducer";
+//import itemsReducer from "./contacts/items";
+//import filterReducer from "./contacts/filter";
 
 const DUMMY_CONTACTS = [
   {id: 'KindLady', name: 'Athene Margoulis', number: '459-12-56'},
@@ -15,16 +14,9 @@ const DUMMY_CONTACTS = [
   {id: 'TyphoonMaster', name: 'Vasili Shevchenko', number: '227-91-26'},
 ];
 
-const persistConfig = {
-  key: 'root',
-  storage,
-}
-
-const persistedContactsReducer = persistReducer(persistConfig, contactsReducer);
-
 export const store = configureStore({
   reducer: {
-    contacts: persistedContactsReducer,
+    contacts: contactsReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
@@ -34,7 +26,7 @@ export const store = configureStore({
     }),
   preloadedState: {
     contacts: {
-      //items: DUMMY_CONTACTS,
+      items: DUMMY_CONTACTS,
       filter: "",
     }
   },

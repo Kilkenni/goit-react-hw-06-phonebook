@@ -11,7 +11,7 @@ export const deleteContact = createAction("contacts/deleteContact"); //payload: 
 
 //made via "Map" notation
 const itemsReducer = createReducer([], {
-  [addContact]: (items, action) => {
+  [addContact]: (items = [], action) => {
     const { name: newName } = action.payload; //destruct new contact from payload
     const normalizedNewName = newName.toLowerCase(); //check if the person already exists in contacts
 
@@ -28,7 +28,7 @@ const itemsReducer = createReducer([], {
     return [...items, action.payload]
   }, 
 
-  [deleteContact.type]: (items, action) => {
+  [deleteContact.type]: (items = [], action) => {
     return items.filter((contact) => {
       return contact.id !== action.payload;
     });
