@@ -17,5 +17,9 @@ const contactFilterSlice = createSlice({
   },
 });
 
+export function selectFilter(state) {
+  return state.contacts.filter;
+}
+
 export const { update } = contactFilterSlice.actions;
 export default contactFilterSlice.reducer;

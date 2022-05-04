@@ -4,10 +4,10 @@ import { useSelector, useDispatch } from "react-redux";
 //import propTypes from "prop-types";
 import styles from "./Filter.module.css";
 
-import { update } from "redux/contacts/filter";
+import { update, selectFilter } from "redux/contacts/filter";
 
 const Filter = (/*{ value, onChange }*/) => {
-  const value = useSelector((state) => state.contacts.filter);
+  const value = useSelector(selectFilter);
 
   const dispatch = useDispatch();
 

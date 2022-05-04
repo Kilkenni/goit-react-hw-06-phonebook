@@ -4,14 +4,14 @@ import ContactItem from "../ContactItem";
 //import propTypes from "prop-types";
 import styles from "./ContactList.module.css"
 
-import {deleteContact} from "../../redux/contacts/items"
+import { deleteContact, selectItems } from "../../redux/contacts/items";
+import { selectFilter } from "redux/contacts/filter";
 
-const ContactList = (/*{ contacts, filter }*/) => {
-    //const lowCaseFilter = filter.toLowerCase();
+const ContactList = () => {
 
-    const lowCaseFilter = useSelector((state) => state.contacts.filter).toLowerCase();
+    const lowCaseFilter = useSelector(selectFilter).toLowerCase();
     
-    const contacts = useSelector((state) => state.contacts.items);
+    const contacts = useSelector(selectItems);
 
     const dispatch = useDispatch();
 

@@ -11,6 +11,7 @@ const contactsReducer = combineReducers({
   filter: filterReducer,
 });
 
+//using nested persistReducer to store only contacts/items, not contacts/filter
 const persistContactsConfig = {
   key: 'contacts',
   storage,

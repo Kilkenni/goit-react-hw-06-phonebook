@@ -2,7 +2,8 @@
 
 GoIT React HW#06 Phonebook
 
-Using sync Redux for storing global state (with Redux Toolkit).
+- Using sync Redux for storing global state (with Redux Toolkit).
+- Backup to localStorage via redux-persist.
 
 **Read in other languages: [Русский](README.md), [Polska](README.pl.md).**
 

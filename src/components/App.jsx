@@ -14,32 +14,6 @@ import ContactList from "./ContactList";
 // ];
 
 export const App = () => {
-  // const [contacts, setContacts] = useState(() => {
-  //   return JSON.parse(localStorage.getItem("contacts")) ?? [];
-  // });
-  //const [filter, setFilter] = useState(''); //search filter
-
-  /*useEffect(() => {
-    if (contacts && contacts.length > 0) {
-      localStorage.setItem("contacts", JSON.stringify(contacts));
-    }
-    else { //if no contacts remain, clean localStorage entirely
-      localStorage.removeItem("contacts");
-    }  
-  }, [contacts]);*/
-
-  /*const addContact = (newContact) => {
-    //check if the person already exists in contacts
-    const normalizedNewName = newContact.name.toLowerCase();
-    if (contacts.some( (contact) => {
-      return contact.name.toLowerCase() === normalizedNewName;
-    }) ) {
-      alert(`${newContact.name} is already in contacts.`);
-      return;
-    }
-
-    setContacts((prevContacts) => { return [...prevContacts, newContact] });
-  }*/
 
   return (
     <div

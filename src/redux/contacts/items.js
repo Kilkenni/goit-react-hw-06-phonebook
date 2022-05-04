@@ -35,4 +35,8 @@ const itemsReducer = createReducer([], {
   }, //action.type not really necessary as toString() for action created via createAction already returns type
 });
 
+export const selectItems = (state) => {
+  return state.contacts.items;
+}
+
 export default itemsReducer;
